@@ -1,0 +1,37 @@
+{
+  "landingPage": "/wp-admin/post.php?post=7&action=edit",
+  "phpExtensionBundles": [
+    "kitchen-sink"
+  ],
+  "features": {
+    "networking": true
+  },
+  "steps": [
+    {
+      "step": "login",
+      "username": "admin",
+      "password": "password"
+    },
+    {
+      "step": "installTheme",
+      "themeZipFile": {
+        "resource": "wordpress.org/themes",
+        "slug": "ollie"
+      }
+    },
+    {
+      "step": "installPlugin",
+      "pluginZipFile": {
+        "resource": "wordpress.org/plugins",
+        "slug": "patternswp"
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php\ninclude 'wordpress/wp-load.php';\nwp_insert_post(array(\n'import_id' => 7,\n'post_title' => 'PatternsWP Demo',\n'post_content' => '<!-- wp:paragraph -->\n<p>You can test out PatternsWP by adding any PatternsWP patterns to the page.</p>\n<!-- /wp:paragraph -->',\n'post_status' => 'publish',\n'post_author' => 1\n));"
+    }
+  ]
+}
